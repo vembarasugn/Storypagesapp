@@ -56,7 +56,7 @@ if (process.env.NODE_ENV === 'development') {
 //Express Handlebars helpers
 const {formatDate,stripTags,truncate,editIcon,select} = require('./helpers/hbs')
 const { truncateSync } = require('fs')
-//const { connection } = require('mongoose')
+const { connection } = require('mongoose')
 
 //Express Handlebars
 app.engine('.hbs', exphbs.engine({ 
