@@ -49,7 +49,7 @@ app.use(
 )
 
 //Logging in 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.PORT === 'development') {
    app.use(morgan('dev'))
 }
 
@@ -102,8 +102,11 @@ app.use('/auth', require('./routes/auth'))
 app.use('/stories', require('./routes/stories'))
 
 const PORT = process.env.PORT || 5000 
+
+const host = "0.0.0.0"
  
-app.listen(PORT, console.log( `Server is listening in ${process.env.PORT} mode on port ${PORT}`))
+app.listen(PORT,host,function(){
+  console.log( `Server is listening in ${process.env.PORT} mode on port ${PORT}`)})
 
 
  
