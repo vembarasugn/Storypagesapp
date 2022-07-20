@@ -27,7 +27,13 @@ connectDB().catch(console.error);
 //MongoDB sessions
 const store = new MongoDBStore({
   uri: process.env.MONGO_URI,
-  collection: 'sessions'
+  collection: 'sessions', 
+  expires: 1000 * 60 * 60 * 24 * 30,
+  connectionOptions: {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 10000
+  }
 });
 
 
@@ -72,14 +78,14 @@ app.set('view engine', '.hbs');
 
 
 //connect-sessions
-app.use(require('express-session')({
+  app.use(session({
     secret: 'This is a secret',
     store: store,
-    resave: false,
+    resave: true,
     saveUninitialized: false,
-    // cookie:{
-    //   maxAge:
-    // }
+    cookie:{
+      maxAge: 1000 * 60 * 60 * 24 * 7 
+    }
   }));
 
 //passport middleware
@@ -103,9 +109,8 @@ app.use('/stories', require('./routes/stories'))
 
 const PORT = process.env.PORT || 5000 
 
-const host = "0.0.0.0"
  
-app.listen(PORT,host,function(){
+app.listen(PORT,function(){
   console.log( `Server is listening in ${process.env.PORT} mode on port ${PORT}`)})
 
 
