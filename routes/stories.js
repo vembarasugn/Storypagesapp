@@ -12,7 +12,7 @@ router.get('/add', validateAuth, (req,res) => {
 
 //  add story to dashboard
 //route POST/stories
-router.post('/', validateAuth, async (req,res) => {
+router.post('/add', validateAuth, async (req,res) => {
     try {
         req.body.user = req.user.id
         await Story.create(req.body) 
