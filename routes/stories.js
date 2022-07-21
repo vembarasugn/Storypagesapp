@@ -153,6 +153,5 @@ router.get('/user/:userId', validateAuth, async (req,res) => {
     }
 })
 
-
 module.exports = router
 

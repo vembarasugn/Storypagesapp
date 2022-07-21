@@ -38,7 +38,8 @@ const store = new MongoDBStore({
 
 
 //Express body parser
-app.use(express.urlencoded({extended:false}))
+//app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({extended: true})); 
 app.use(express.json()) 
 
 
@@ -81,7 +82,7 @@ app.set('view engine', '.hbs');
   app.use(session({
     secret: 'This is a secret',
     store: store,
-    resave: true,
+    resave:false,
     saveUninitialized: false,
     cookie:{
       maxAge: 1000 * 60 * 60 * 24 * 7 
