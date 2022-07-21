@@ -111,7 +111,7 @@ const PORT = process.env.PORT || 5000
 
  
 app.listen(PORT,function(){
-  console.log( `Server is listening in ${process.env.PORT} mode on port ${PORT}`)})
+  console.log( `Server is listening on localhost:${process.env.PORT} ..!`)})
 
 
  
